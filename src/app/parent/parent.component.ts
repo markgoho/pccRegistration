@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Parent } from './parent';
 
 @Component({
   selector: 'app-parent',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./parent.component.css']
 })
 export class ParentComponent implements OnInit {
+  parent: Parent;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  newParent() {
+    
   }
 
 }
