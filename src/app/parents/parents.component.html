@@ -1,0 +1,61 @@
+<div *ngIf="parents">
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>
+            <span (click)="orderByProp('firstName')">First</span>
+            <span (click)="orderByProp('lastName')">Last</span>
+          </th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let parent of parents">
+          <td>{{parent.firstName}} {{parent.lastName}}</td>
+          <td>{{parent.phone}}</td>
+          <td>{{parent.email}}</td>
+          <td>
+            <button class="btn btn-default">More Info</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="changeState('add')" class="btn btn-default">Add Parent</button>
+  </div>
+</div>
+
+<div *ngIf="appState == 'add'">
+  <div class="container">
+      <h1>Parent Form</h1>
+      <form #parentForm="ngForm">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" id="firstName" required
+            [(ngModel)]="parent.firstName" name="firstName"
+            #firstName="ngModel">
+          <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">
+            First name is required
+          </div>
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" id="lastName" required
+            [(ngModel)]="parent.lastName" name="lastName">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text" class="form-control" id="phone" required
+            [(ngModel)]="parent.phone" name="phone">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" id="email" required
+            [(ngModel)]="parent.email" name="email">
+        </div>
+        <button type="submit" class="btn btn-default"
+          (click)="addParent(parentForm.value); parentForm.reset()"
+          [disabled]="!parentForm.form.valid">Submit</button>
+        <button class="btn btn-default"
+          (click)="changeState('default')">Cancel</button>  
+      </form>
+  </div>
+</div>

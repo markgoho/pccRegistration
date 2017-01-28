@@ -11,8 +11,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home.component';
 import { routing } from './app.routing';
 import { StudentComponent } from './student/student.component';
-import { ParentComponent } from './parent/parent.component';
+import { ParentsComponent } from './parents/parents.component';
 import { CourseComponent } from './course/course.component';
+import { FirebaseService } from './firebase.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -21,8 +23,9 @@ import { CourseComponent } from './course/course.component';
     NavbarComponent,
     HomeComponent,
     StudentComponent,
-    ParentComponent,
-    CourseComponent
+    ParentsComponent,
+    CourseComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { CourseComponent } from './course/course.component';
     AngularFireModule.initializeApp(firebaseConfig, authConfig),
     routing
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
