@@ -1,31 +1,35 @@
-<div *ngIf="parents">
-  <div class="container">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>
-            <span (click)="orderByProp('firstName')">First</span>
-            <span (click)="orderByProp('lastName')">Last</span>
-          </th>
-          <th>Phone</th>
-          <th>Email</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let parent of parents">
-          <td>{{parent.firstName}} {{parent.lastName}}</td>
-          <td>{{parent.phone}}</td>
-          <td>{{parent.email}}</td>
-          <td>
-            <button class="btn btn-default">More Info</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <button (click)="changeState('add')" class="btn btn-default">Add Parent</button>
-  </div>
+
+<div *ngIf="parents" class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>
+          <span (click)="orderByProp('firstName')">First</span>
+          <span (click)="orderByProp('lastName')">Last</span>
+        </th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>UID</th>
+        <th>Created On</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let parent of parents">
+        <td>{{parent.firstName}} {{parent.lastName}}</td>
+        <td>{{parent.phone}}</td>
+        <td>{{parent.email}}</td>
+        <td>{{parent?.uid}}</td>
+        <td>{{parent?.createdOn | date}}
+        <td>
+          <button class="btn btn-default">More Info</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="changeState('add')" class="btn btn-default">Add Parent</button>
 </div>
+
 
 <div *ngIf="appState == 'add'">
   <div class="container">

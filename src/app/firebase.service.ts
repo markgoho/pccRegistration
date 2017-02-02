@@ -14,7 +14,7 @@ export class FirebaseService {
     return this.parents;
   }
 
-  addParent(parent: Parent) {
+  addParent(parent) {
     return this.parents.push(parent)
   }
 

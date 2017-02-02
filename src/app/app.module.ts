@@ -15,6 +15,7 @@ import { ParentsComponent } from './parents/parents.component';
 import { CourseComponent } from './course/course.component';
 import { FirebaseService } from './firebase.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SigninComponent } from './authentication/signin/signin.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     StudentComponent,
     ParentsComponent,
     CourseComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,

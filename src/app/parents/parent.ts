@@ -3,6 +3,8 @@ export class Parent {
     public firstName: string,
     public lastName: string,
     public phone: string,
-    public email: string
+    public email: string,
+    public uid: string,
+    public createdOn: Date 
   ) {  }
 }
