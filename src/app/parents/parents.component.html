@@ -9,20 +9,16 @@
         </th>
         <th>Phone</th>
         <th>Email</th>
-        <th>UID</th>
-        <th>Created On</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let parent of parents">
         <td>{{parent.firstName}} {{parent.lastName}}</td>
-        <td>{{parent.phone}}</td>
-        <td>{{parent.email}}</td>
-        <td>{{parent?.uid}}</td>
-        <td>{{parent?.createdOn | date}}
+        <td><a href="tel:{{parent.phone}}">{{parent.phone}}</a></td>
+        <td><a href="mailto:{{parent.email}}">{{parent.email}}</a></td>
         <td>
-          <button class="btn btn-default">More Info</button>
+          <button (click)="goToParent(parent.$key)" class="btn btn-default">More Info</button>
         </td>
       </tr>
     </tbody>

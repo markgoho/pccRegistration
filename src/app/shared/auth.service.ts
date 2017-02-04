@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { AngularFire } from 'angularfire2';
+import { AngularFire, FirebaseAuthState } from 'angularfire2';
 
 @Injectable()
 export class AuthService {
 
-  user;
+  currentUser;
 
-  constructor(public af: AngularFire) { 
-    this.af.auth.subscribe(
-      data => console.log(data)
-    );
+  constructor(public af: AngularFire, private auth: FirebaseAuthState) { 
+    this.af.auth.subscribe(auth => {
+      this.currentUser.uid = auth.uid;
+    });
   }
+
 
   login() {
     this.af.auth.login();

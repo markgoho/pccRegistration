@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire } from 'angularfire2';
+import { AngularFire, FirebaseAuthState } from 'angularfire2';
 
 @Component({
   selector: 'app-navbar',
@@ -8,15 +8,15 @@ import { AngularFire } from 'angularfire2';
 })
 export class NavbarComponent implements OnInit {
 
-  isAuthenticated;
+  isAuthenticated: FirebaseAuthState;
+  currentUser;
 
-  constructor(public af: AngularFire) {
-    this.af.auth.subscribe(
-      authStatus => this.isAuthenticated = authStatus
-    );
-  }
+  constructor(public af: AngularFire) {  }
 
   ngOnInit() {
+    this.af.auth.subscribe(authStatus => {
+      this.isAuthenticated = authStatus;
+    });
   }
 
   isAuth() {

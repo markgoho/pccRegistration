@@ -6,20 +6,30 @@ import { Parent } from './parents/parent';
 
 @Injectable()
 export class FirebaseService {
-  parents: FirebaseListObservable<Parent[]> = this.af.database.list('/parents') as FirebaseListObservable<Parent[]>;
+  parents: FirebaseListObservable<Parent[]> = this.af.database.list('/parents');
 
   constructor(private af: AngularFire) { }
 
-  getParents() {
+  getParents(): FirebaseListObservable<Parent[]> {
     return this.parents;
   }
 
-  addParent(parent) {
-    return this.parents.push(parent)
+  addParent(parent: Parent) {
+    this.parents.push(parent);
   }
 
-  orderByProp(parentProp: string) {
-    this.parents = this.af.database.list('/parents', { query: { orderByChild: parentProp }});
+  editParent(key: string, parent: Parent) {
+    this.parents.update(key, parent);
+  }
+
+  deleteParent(key: string) {
+    this.parents.remove(key);
+  }
+
+  orderByProp(parentProp: string): FirebaseListObservable<Parent[]> {
+    this.parents = this.af.database.list('/parents', { 
+      query: { orderByChild: parentProp }
+    });
     return this.parents;
   }
 }

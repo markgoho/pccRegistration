@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>{{ (parentInfo | async)?.firstName }} {{ (parentInfo | async)?.lastName }}</h1>
+  <div>User created on: {{ (parentInfo | async)?.createdOn }}</div>
+  <span>Phone: {{(parentInfo | async)?.phone}}</span> <span>Email: {{(parentInfo | async)?.email}}</span>
+</div>
+
+
+

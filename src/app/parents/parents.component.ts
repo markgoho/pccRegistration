@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Parent } from './parent';
+import { Router } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
 import { AngularFire } from 'angularfire2';
+
+import { Parent } from './parent';
 
 @Component({
   selector: 'app-parents',
@@ -16,7 +18,8 @@ export class ParentsComponent implements OnInit {
   parent = new Parent('', '', '', '', '', new Date());
 
   constructor (private firebaseService: FirebaseService,
-                public af: AngularFire) { }
+                public af: AngularFire,
+                private router: Router ) { }
 
   ngOnInit() {
     this.firebaseService.getParents()
@@ -50,5 +53,8 @@ export class ParentsComponent implements OnInit {
       .subscribe(parents => this.parents = parents);
   }
 
+  goToParent(key) {
+    this.router.navigate(['parent', key]);
+  }
 
 }
