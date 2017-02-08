@@ -8,19 +8,19 @@ import { AngularFire, FirebaseAuthState } from 'angularfire2';
 })
 export class NavbarComponent implements OnInit {
 
-  isAuthenticated: FirebaseAuthState;
+  auth: FirebaseAuthState;
   currentUser;
 
   constructor(public af: AngularFire) {  }
 
   ngOnInit() {
     this.af.auth.subscribe(authStatus => {
-      this.isAuthenticated = authStatus;
+      this.auth = authStatus;
     });
   }
 
   isAuth() {
-    return this.isAuthenticated;
+    return this.auth;
   }
 
 }

@@ -1,0 +1,74 @@
+// .loading {
+//   width: 30px;
+//   height: 30px;
+//   border: 5px solid #ccc;
+//   position: fixed;
+//   left: 50%;
+//   margin-left: -20px;
+//   top: 50%;
+//   margin-top: -20px;
+//   border-radius: 50%;
+// }
+
+
+// .loading:after {
+//   content: '';
+//   position: absolute;
+//   width: 40px;
+//   height: 10px;
+//   background: #E2E4E6;
+//   top: 10px;
+//   left: -5px;
+//   animation: spin 1.2s infinite;
+// }
+
+#lock {
+    width:40%;
+    margin: 1.5em auto 4em auto;
+    display:block;
+}
+
+#fb {
+    background:#3B5998 url('assets/images/facebook.svg') no-repeat 14px 6px;
+    background-size: 47px;
+    color:#fff;
+}
+
+#google {
+    border: 1px solid #95989A;
+    background: #fff  url('assets/images/google.svg') no-repeat 25px;
+    background-size: 25px;
+}
+
+#email {
+    background: #ECECEC  url('assets/images/email.svg') no-repeat 25px;
+    background-size: 25px;
+}
+
+
+@media (max-width: 600px) {
+    button {
+        font-size:1em;
+    }
+}
+
+@media (max-width: 600px) {
+    #page {
+        padding:1em;
+    }
+    #toolbar {
+        width:90%;
+        margin-left: -45%;
+    }
+    #fb {
+        background:#3B5998;
+    }
+
+    #google {
+        background: #fff;
+    }
+
+    #email {
+        background: #ECECEC;
+    }
+}

@@ -17,6 +17,10 @@ import { FirebaseService } from './firebase.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SigninComponent } from './authentication/signin/signin.component';
 import { ParentDetailComponent } from './parent/parent-detail/parent-detail.component';
+import { AuthGuard } from './auth/auth-guard.service';
+import { LoginComponent } from './auth/login/login.component';
+import { EmailComponent } from './auth/email/email.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 
 @NgModule({
@@ -29,7 +33,10 @@ import { ParentDetailComponent } from './parent/parent-detail/parent-detail.comp
     CourseComponent,
     PageNotFoundComponent,
     SigninComponent,
-    ParentDetailComponent
+    ParentDetailComponent,
+    LoginComponent,
+    EmailComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,7 @@ import { ParentDetailComponent } from './parent/parent-detail/parent-detail.comp
     AngularFireModule.initializeApp(firebaseConfig, authConfig),
     routing
   ],
-  providers: [FirebaseService],
+  providers: [FirebaseService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
