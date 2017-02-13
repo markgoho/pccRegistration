@@ -1,6 +1,8 @@
 import { CanActivate, Router } from '@angular/router';
-import { AngularFireAuth } from "angularfire2/angularfire2";
 import { Injectable } from "@angular/core";
+
+import {AuthService} from './auth.service';
+
 import { Observable } from "rxjs/Rx";
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
@@ -9,12 +11,12 @@ import 'rxjs/add/operator/take';
 @Injectable()
 export class AuthGuard {
 
-  constructor(private auth: AngularFireAuth, private router: Router) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   canActivate(): Observable<boolean> {
-    return Observable.from(this.auth)
+    return this.auth.auth$
       .take(1)
-      .map(state => !!state)
+      .map(authState => !!authState)
       .do(authenticated => {
         if (!authenticated) this.router.navigate([ '/login' ]);
       });

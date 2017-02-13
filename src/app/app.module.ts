@@ -21,6 +21,7 @@ import { AuthGuard } from './auth/auth-guard.service';
 import { LoginComponent } from './auth/login/login.component';
 import { EmailComponent } from './auth/email/email.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { AuthService } from './auth/auth.service';
 
 
 @NgModule({
@@ -43,9 +44,9 @@ import { SignupComponent } from './auth/signup/signup.component';
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig, authConfig),
-    routing
+    routing,
   ],
-  providers: [FirebaseService, AuthGuard],
+  providers: [FirebaseService, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

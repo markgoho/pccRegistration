@@ -25,9 +25,7 @@ export class ParentsComponent implements OnInit {
     this.firebaseService.getParents()
       .subscribe(parents => this.parents = parents);
 
-    this.af.auth.subscribe(
-      authData => this.uid = authData.uid
-    );
+    this.af.auth.subscribe(authData => this.uid = authData.uid);
   }
 
   addParent(parent) {
