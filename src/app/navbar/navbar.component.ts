@@ -1,6 +1,6 @@
 import {AuthService} from '../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { AngularFire, FirebaseAuthState } from 'angularfire2';
+import { AngularFire } from 'angularfire2';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +8,6 @@ import { AngularFire, FirebaseAuthState } from 'angularfire2';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  name: any;
 
   constructor(private auth: AuthService) { }
 

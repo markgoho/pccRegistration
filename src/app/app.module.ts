@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 import { firebaseConfig, authConfig } from '../environments/firebase.config';
 
@@ -44,6 +45,7 @@ import { AuthService } from './auth/auth.service';
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig, authConfig),
+    NgbModule.forRoot(),
     routing,
   ],
   providers: [FirebaseService, AuthGuard, AuthService],

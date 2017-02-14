@@ -18,9 +18,9 @@ const APP_ROUTES: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'students', component: StudentComponent },
-  { path: 'parents', component: ParentsComponent },
-  { path: 'parent/:key', component: ParentDetailComponent },
-  { path: 'courses', component: CourseComponent },
+  { path: 'parents', component: ParentsComponent, canActivate: [AuthGuard] },
+  { path: 'parent/:key', component: ParentDetailComponent, canActivate: [AuthGuard] },
+  { path: 'courses', component: CourseComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent }
 ];
 
