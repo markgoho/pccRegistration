@@ -12,9 +12,12 @@ import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from './auth/auth-guard.service';
 import { SignupComponent } from './auth/signup/signup.component';
 import { EmailComponent } from './auth/email/email.component';
+import { ObservablesComponent } from './observables/observables.component';
+
 
 const APP_ROUTES: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'observables', component: ObservablesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'students', component: StudentComponent },

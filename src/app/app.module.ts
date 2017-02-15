@@ -23,6 +23,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { EmailComponent } from './auth/email/email.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthService } from './auth/auth.service';
+import { ObservablesComponent } from './observables/observables.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { AuthService } from './auth/auth.service';
     ParentDetailComponent,
     LoginComponent,
     EmailComponent,
-    SignupComponent
+    SignupComponent,
+    ObservablesComponent
   ],
   imports: [
     BrowserModule,

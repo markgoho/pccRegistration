@@ -1,0 +1,17 @@
+<h2>Observables</h2>
+
+<code>
+  this.parents$ = af.database.list('/parents')
+</code>
+<br>
+
+<code>*ngFor="let parent of parents$ | async</code>
+<div class="parentFlex">
+  <div *ngFor="let parent of parents$ | async">
+  <pre>
+{{parent | json}}
+  </pre>
+  </div>
+</div>
+
+
