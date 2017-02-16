@@ -1,17 +1,53 @@
-<h2>Observables</h2>
+<div *ngIf="parents$" class="container">
+  <h2>Observables</h2>
 
-<code>
-  this.parents$ = af.database.list('/parents')
-</code>
-<br>
+  <!--<code>
+    this.parents$ = af.database.list('/parents')
+  </code>
+  <br>
 
-<code>*ngFor="let parent of parents$ | async</code>
-<div class="parentFlex">
-  <div *ngFor="let parent of parents$ | async">
-  <pre>
+  <code>*ngFor="let parent of parents$ | async</code>
+  <div class="parentFlex">
+    <div *ngFor="let parent of parents$ | async">
+    <pre>
 {{parent | json}}
-  </pre>
+    </pre>
+    </div>
+  </div>-->
+
+  <h3>Order by Child:</h3>
+  <div class="btn-group" role="group">
+  <button 
+    type="button"
+    (click)="orderByChild(property)"
+    *ngFor="let property of parentProps$ | async" 
+    class="btn btn-secondary">{{property}}</button>
   </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Created On</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone</th>
+        <th>uid</th>
+        <th>$key</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let parent of parents$ | async">
+        <td>{{parent.createdOn}}</td>
+        <td><a href="mailto:{{parent.email}}">{{parent.email}}</a></td>
+        <td>{{parent.firstName}}</td>
+        <td>{{parent.lastName}}</td>
+        <td><a href="tel:{{parent.phone}}">{{parent.phone}}</a></td>
+        <td>{{parent.uid}}</td>
+        <td>{{parent.$key}}</td>        
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 

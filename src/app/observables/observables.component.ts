@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AngularFire, FirebaseListObservable} from "angularfire2";
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from "angularfire2";
+import { Observable } from 'rxjs/Rx';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-observables',
@@ -8,14 +10,29 @@ import {AngularFire, FirebaseListObservable} from "angularfire2";
 })
 export class ObservablesComponent implements OnInit {
   parents$: FirebaseListObservable<any[]>;
-
+  property: string;
+  parent$: FirebaseObjectObservable<any>;
+  parentProps$: Observable<any[]>;
+  propSubject: BehaviorSubject<any> = new BehaviorSubject('email');
 
   constructor(public af: AngularFire) {
-    this.parents$ = af.database.list('/parents');
+    this.parent$ = af.database.object('/parents/-Kc-wN7W4GZe0SBq8ttt');
+    this.parentProps$ = this.parent$.map(parent => Object.getOwnPropertyNames(parent));
+    this.parents$ = this.af.database.list('/parents', 
+      { 
+        query: { 
+          orderByChild: this.propSubject
+        }
+    });
+    
   }
 
   ngOnInit() {
-    this.parents$.subscribe(parent => console.log(parent));
+    this.propSubject.next('email');
   }
 
+  orderByChild(property: string) {
+    console.log(property);
+    this.propSubject.next(property);
+  }
 }
