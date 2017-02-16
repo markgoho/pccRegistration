@@ -15,7 +15,7 @@ export class ParentsComponent implements OnInit {
   activeKey: string;
   appState: string;
   uid: string;
-  parent = new Parent('', '', '', '', '', new Date());
+  parent: Parent = new Parent('', '', '', '', '', '', new Date());
 
   constructor (private firebaseService: FirebaseService,
                 public af: AngularFire,
@@ -30,6 +30,7 @@ export class ParentsComponent implements OnInit {
 
   addParent(parent) {
     const createdOn = new Date().toLocaleDateString();
+    parent.fullName = `${parent.firstName} ${parent.lastName}`;
     parent.createdOn = createdOn;
     parent.uid = this.uid;
     console.log(parent);

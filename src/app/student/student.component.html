@@ -1,3 +1,65 @@
-<p>
-  student works!
-</p>
+<div *ngIf="students" class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Parent</th>
+        <th>Email</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let parent of parents">
+        <td>{{parent.fullName}}</td>
+        <td><a href="tel:{{parent.phone}}">{{parent.phone}}</a></td>
+        <td><a href="mailto:{{parent.email}}">{{parent.email}}</a></td>
+        <td>
+          <button (click)="goToParent(parent.$key)" class="btn btn-default">More Info</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="changeState('add')" class="btn btn-default">Add Parent</button>
+</div>
+
+<!--<div *ngIf="appState == 'add'">-->
+  <div class="container">
+    <form novalidate>
+      <div class="form-group">
+        <label>First Name</label>
+        <input class="form-control" type="text" name="firstName" placeholder="First name">
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input class="form-control" type="text" name="lastName" placeholder="Last name">
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd"
+                name="dp" ngbDatepicker #d="ngbDatepicker">
+          <div class="input-group-addon" (click)="d.toggle()" >
+            <!--<img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>-->
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        Gender
+        <div ngbRadioGroup name="gender">
+          <label class="btn btn-primary">
+            <input type="radio" [value]="male">Male
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" [value]="female">Female
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Parent</label>
+        <select class="form-control" name="parent" id="parent">
+          <option *ngFor="let parent of parents$ | async" value="parent.uid">{{parent.fullName}}</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" type="submit">Create student</button>
+    </form>
+  </div>
+<!--</div>-->

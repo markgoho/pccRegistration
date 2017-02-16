@@ -3,10 +3,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>
-          <span (click)="orderByProp('firstName')">First</span>
-          <span (click)="orderByProp('lastName')">Last</span>
-        </th>
+        <th>First Last</th>
         <th>Phone</th>
         <th>Email</th>
         <th></th>
@@ -14,7 +11,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let parent of parents">
-        <td>{{parent.firstName}} {{parent.lastName}}</td>
+        <td>{{parent.fullName}}</td>
         <td><a href="tel:{{parent.phone}}">{{parent.phone}}</a></td>
         <td><a href="mailto:{{parent.email}}">{{parent.email}}</a></td>
         <td>

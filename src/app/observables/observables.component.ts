@@ -17,7 +17,7 @@ export class ObservablesComponent implements OnInit {
   propSubject: BehaviorSubject<any> = new BehaviorSubject('email');
 
   constructor(public af: AngularFire) {
-    this.parent$ = af.database.object('/parents/-Kc-wN7W4GZe0SBq8ttt');
+    this.parent$ = af.database.object('/parents/-Kd7gd392Igs1S8nsyqX');
     this.parentProps$ = this.parent$.map(parent => Object.getOwnPropertyNames(parent));
     this.parents$ = this.af.database.list('/parents', 
       { 

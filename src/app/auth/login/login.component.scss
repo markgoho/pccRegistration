@@ -1,74 +1,49 @@
-// .loading {
-//   width: 30px;
-//   height: 30px;
-//   border: 5px solid #ccc;
-//   position: fixed;
-//   left: 50%;
-//   margin-left: -20px;
-//   top: 50%;
-//   margin-top: -20px;
-//   border-radius: 50%;
-// }
+.sign-in-wrapper {
+  height: 100%;
+  box-sizing: border-box;
 
+  .sign-in {
+    margin: 0 auto;
+    max-width: 248px;
 
-// .loading:after {
-//   content: '';
-//   position: absolute;
-//   width: 40px;
-//   height: 10px;
-//   background: #E2E4E6;
-//   top: 10px;
-//   left: -5px;
-//   animation: spin 1.2s infinite;
-// }
+    h1 {
+      margin: 0;
+      padding-top: 90px;
+      padding-bottom: 36px;
+      font-size: 24px;
+      font-weight: 300;
+      text-align: center;
+      color: rgba(0, 0, 0, .54);
+    }
 
-#lock {
-    width:40%;
-    margin: 1.5em auto 4em auto;
-    display:block;
-}
-
-#fb {
-    background:#3B5998 url('assets/images/facebook.svg') no-repeat 14px 6px;
-    background-size: 47px;
-    color:#fff;
-}
-
-#google {
-    border: 1px solid #95989A;
-    background: #fff  url('assets/images/google.svg') no-repeat 25px;
-    background-size: 25px;
-}
-
-#email {
-    background: #ECECEC  url('assets/images/email.svg') no-repeat 25px;
-    background-size: 25px;
-}
-
-
-@media (max-width: 600px) {
     button {
-        font-size:1em;
-    }
-}
+      margin-bottom: 10px;
+      padding: 6px 24px;
+      width: 100%;
+      text-align: left;
+      font-weight: 600;
 
-@media (max-width: 600px) {
-    #page {
-        padding:1em;
-    }
-    #toolbar {
-        width:90%;
-        margin-left: -45%;
-    }
-    #fb {
-        background:#3B5998;
-    }
+      &.auth-google {
+        background-color: #ffffff;
+        color: #727272;
+      }
 
-    #google {
-        background: #fff;
-    }
+      &.auth-facebook {
+        background-color: #3b5998;
+        color: #ffffff;
+      }
 
-    #email {
-        background: #ECECEC;
+      &.auth-twitter {
+        background-color: #55acee;
+        color: #ffffff;
+      }
+
+      &.auth-github {
+        background-color: #333333;
+        color: #ffffff;
+      }
+
     }
+  }
+
 }

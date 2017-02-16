@@ -34,8 +34,7 @@ export class LoginComponent {
   }
 
   private postSignIn(): void {
-    this.router.navigate(['/parents'])
-      .then(() => console.log('Navigated to parents'));
+    this.router.navigate(['/parents']);
   }
 
 }
