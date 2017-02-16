@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from "angularfire2";
 import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { TypeaheadComponent } from './typeahead/typeahead.component';
 
 @Component({
   selector: 'app-observables',

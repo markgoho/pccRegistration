@@ -24,6 +24,7 @@ import { EmailComponent } from './auth/email/email.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthService } from './auth/auth.service';
 import { ObservablesComponent } from './observables/observables.component';
+import { TypeaheadComponent } from './observables/typeahead/typeahead.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { ObservablesComponent } from './observables/observables.component';
     LoginComponent,
     EmailComponent,
     SignupComponent,
-    ObservablesComponent
+    ObservablesComponent,
+    TypeaheadComponent
   ],
   imports: [
     BrowserModule,
