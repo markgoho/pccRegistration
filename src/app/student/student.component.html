@@ -24,42 +24,85 @@
 
 <!--<div *ngIf="appState == 'add'">-->
   <div class="container">
-    <form novalidate>
+    <form novalidate (ngSubmit)="onSubmit(student)" [formGroup]="student">
       <div class="form-group">
         <label>First Name</label>
-        <input class="form-control" type="text" name="firstName" placeholder="First name">
+        <input 
+          class="form-control" 
+          type="text" 
+          placeholder="First name" 
+          formControlName="firstName">
+      </div>
+      <div
+        class="error"
+        *ngIf="student.get('firstName').hasError('required') && student.get('firstName').touched">
+        First name is required
       </div>
       <div class="form-group">
         <label>Last Name</label>
-        <input class="form-control" type="text" name="lastName" placeholder="Last name">
+        <input 
+          class="form-control" 
+          type="text" 
+          placeholder="Last name"
+          formControlName="lastName">
+      </div>
+      <div
+        class="error"
+        *ngIf="student.get('lastName').hasError('required') && student.get('lastName').touched">
+        Last name is required
       </div>
       <div class="form-group">
         <div class="input-group">
-          <input class="form-control" placeholder="yyyy-mm-dd"
-                name="dp" ngbDatepicker #d="ngbDatepicker">
+          <input 
+            class="form-control" 
+            placeholder="yyyy-mm-dd"
+            ngbDatepicker 
+            #d="ngbDatepicker"
+            formControlName="birthDate">
           <div class="input-group-addon" (click)="d.toggle()" >
             <!--<img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>-->
           </div>
         </div>
       </div>
+      <div
+        class="error"
+        *ngIf="student.get('birthDate').hasError('required') && student.get('birthDate').touched">
+        Date is required
+      </div>
       <div class="form-group">
         Gender
-        <div ngbRadioGroup name="gender">
+        <div ngbRadioGroup>
           <label class="btn btn-primary">
-            <input type="radio" [value]="male">Male
+            <input formControlName="gender" type="radio" value="male">Male
           </label>
           <label class="btn btn-primary">
-            <input type="radio" [value]="female">Female
+            <input formControlName="gender" type="radio" value="female">Female
           </label>
         </div>
       </div>
+      <div
+        class="error"
+        *ngIf="student.get('gender').hasError('required') && student.get('gender').touched">
+        Gender is required
+      </div>
       <div class="form-group">
         <label>Parent</label>
-        <select class="form-control" name="parent" id="parent">
-          <option *ngFor="let parent of parents$ | async" value="parent.uid">{{parent.fullName}}</option>
+        <select 
+          class="form-control" 
+          id="parent"
+          formControlName="parent">
+          <option *ngFor="let parent of parents$ | async" value="{{parent.uid}}">{{parent.fullName}}</option>
         </select>
       </div>
-      <button class="btn btn-primary" type="submit">Create student</button>
+      <div
+        class="error"
+        *ngIf="student.get('parent').hasError('required') && student.get('parent').touched">
+        Parent is required
+      </div>
+      <button [disabled]="student.invalid" class="btn btn-primary" type="submit">Create student</button>
     </form>
+    <pre>
+{{student.value | json}}
+    </pre>
   </div>
 <!--</div>-->

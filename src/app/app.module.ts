@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { firebaseConfig, authConfig } from '../environments/firebase.config';
 
@@ -48,6 +49,7 @@ import { TypeaheadComponent } from './observables/typeahead/typeahead.component'
     BrowserModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig, authConfig),
     NgbModule.forRoot(),
     routing,
