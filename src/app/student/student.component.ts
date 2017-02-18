@@ -19,11 +19,11 @@ export class StudentComponent implements OnInit {
   parents$: FirebaseListObservable<any[]>
   students$: FirebaseListObservable<any[]>
 
-  constructor(public af: AngularFire, config: NgbDatepickerConfig, private fb: FormBuilder) {
+  constructor(public af: AngularFire, 
+              private config: NgbDatepickerConfig, 
+              private fb: FormBuilder) {
     this.students$ = af.database.list('/students');
     this.parents$ = af.database.list('/parents');
-
-
   }
 
   ngOnInit() {
@@ -37,7 +37,12 @@ export class StudentComponent implements OnInit {
   }
 
   onSubmit() {
-    this.students$.push(this.student.value);
+    const formValues = this.student.value;
+    // http://stackoverflow.com/questions/40776255/ng-bootstrap-datepicker-format/41443807#41443807
+    const ngbDate = this.student.controls['birthDate'].value;
+    formValues['born'] = new Date(ngbDate.year, ngbDate.month-1, ngbDate.day).toString();
+    formValues['fullName'] = `${this.student.value.firstName} ${this.student.value.lastName}`
+    this.students$.push(formValues);
   }
 
   changeState(state:string, key:any = null) {

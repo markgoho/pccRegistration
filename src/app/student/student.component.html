@@ -24,7 +24,10 @@
 
 <!--<div *ngIf="appState == 'add'">-->
   <div class="container">
+    
     <form novalidate (ngSubmit)="onSubmit(student)" [formGroup]="student">
+      
+      
       <div class="form-group">
         <label>First Name</label>
         <input 
@@ -33,11 +36,14 @@
           placeholder="First name" 
           formControlName="firstName">
       </div>
+      
       <div
         class="error"
         *ngIf="student.get('firstName').hasError('required') && student.get('firstName').touched">
         First name is required
       </div>
+      
+      
       <div class="form-group">
         <label>Last Name</label>
         <input 
@@ -46,11 +52,14 @@
           placeholder="Last name"
           formControlName="lastName">
       </div>
+      
       <div
         class="error"
         *ngIf="student.get('lastName').hasError('required') && student.get('lastName').touched">
         Last name is required
       </div>
+      
+      
       <div class="form-group">
         <div class="input-group">
           <input 
@@ -64,11 +73,14 @@
           </div>
         </div>
       </div>
+      
       <div
         class="error"
         *ngIf="student.get('birthDate').hasError('required') && student.get('birthDate').touched">
         Date is required
       </div>
+      
+      
       <div class="form-group">
         Gender
         <div ngbRadioGroup>
@@ -80,11 +92,14 @@
           </label>
         </div>
       </div>
+      
       <div
         class="error"
         *ngIf="student.get('gender').hasError('required') && student.get('gender').touched">
         Gender is required
       </div>
+      
+      
       <div class="form-group">
         <label>Parent</label>
         <select 
@@ -94,13 +109,18 @@
           <option *ngFor="let parent of parents$ | async" value="{{parent.uid}}">{{parent.fullName}}</option>
         </select>
       </div>
+      
       <div
         class="error"
         *ngIf="student.get('parent').hasError('required') && student.get('parent').touched">
         Parent is required
       </div>
       <button [disabled]="student.invalid" class="btn btn-primary" type="submit">Create student</button>
+    
+
     </form>
+    
+    
     <pre>
 {{student.value | json}}
     </pre>
