@@ -106,7 +106,7 @@
           class="form-control" 
           id="parent"
           formControlName="parent">
-          <option *ngFor="let parent of parents$ | async" value="{{parent.uid}}">{{parent.fullName}}</option>
+          <option *ngFor="let parent of parents$ | async" value="{{parent.$key}}">{{parent.fullName}}</option>
         </select>
       </div>
       

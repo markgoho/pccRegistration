@@ -56,7 +56,7 @@ export class ParentsComponent implements OnInit {
     this.appState = state;
   }
 
-  goToParent(key) {
+  goToParent(key: string) {
     this.router.navigate(['parent', key]);
   }
 
