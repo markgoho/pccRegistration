@@ -1,4 +1,3 @@
-
 <div *ngIf="parents" class="container">
   <table class="table table-striped">
     <thead>
@@ -23,36 +22,84 @@
   <button (click)="changeState('add')" class="btn btn-default">Add Parent</button>
 </div>
 
-
 <div *ngIf="appState == 'add'">
   <div class="container">
       <h1>Parent Form</h1>
-      <form #parentForm="ngForm">
+      
+      <form novalidate (ngSubmit)="onSubmit()" [formGroup]="parent">
+        
         <div class="form-group">
-          <label for="firstName">First Name</label>
-          <input type="text" class="form-control" id="firstName" required
-            [(ngModel)]="parent.firstName" name="firstName"
-            #firstName="ngModel">
-          <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">
-            First name is required
-          </div>
-          <label for="lastName">Last Name</label>
-          <input type="text" class="form-control" id="lastName" required
-            [(ngModel)]="parent.lastName" name="lastName">
+          <label>First Name</label>
+          <input 
+            class="form-control" 
+            type="text" 
+            placeholder="First name" 
+            formControlName="firstName">
         </div>
+        
+        <div
+          class="error"
+          *ngIf="parent.get('firstName').hasError('required') && parent.get('firstName').touched">
+          First name is required
+        </div>
+        
+        
         <div class="form-group">
-          <label for="phone">Phone</label>
-          <input type="text" class="form-control" id="phone" required
-            [(ngModel)]="parent.phone" name="phone">
-          <label for="email">Email</label>
-          <input type="text" class="form-control" id="email" required
-            [(ngModel)]="parent.email" name="email">
+          <label>Last Name</label>
+          <input 
+            class="form-control" 
+            type="text" 
+            placeholder="Last name"
+            formControlName="lastName">
         </div>
-        <button type="submit" class="btn btn-default"
-          (click)="addParent(parentForm.value); parentForm.reset()"
-          [disabled]="!parentForm.form.valid">Submit</button>
+        
+        <div
+          class="error"
+          *ngIf="parent.get('lastName').hasError('required') && parent.get('lastName').touched">
+          Last name is required
+        </div>
+        
+        <div class="form-group">
+          <label>Phone</label>
+          <input 
+            class="form-control" 
+            type="text" 
+            placeholder="Phone number"
+            formControlName="phone">
+        </div>
+        
+        <div
+          class="error"
+          *ngIf="parent.get('phone').hasError('required') && parent.get('phone').touched">
+          Phone number is required
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input 
+            class="form-control" 
+            type="text" 
+            placeholder="Email address"
+            formControlName="email">
+        </div>
+        
+        <div
+          class="error"
+          *ngIf="parent.get('email').hasError('required') && parent.get('email').touched">
+          Phone number is required
+        </div>
+        
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="parent.invalid">Create Parent</button>
+        
         <button class="btn btn-default"
           (click)="changeState('default')">Cancel</button>  
+      
       </form>
+      <pre>
+{{parent.value | json}}
+      </pre>
   </div>
 </div>
