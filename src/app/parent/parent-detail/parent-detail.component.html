@@ -1,7 +1,9 @@
 <div class="container">
-  <h1>{{ (parentInfo | async)?.firstName }} {{ (parentInfo | async)?.lastName }}</h1>
-  <div>User created on: {{ (parentInfo | async)?.createdOn }}</div>
-  <span>Phone: {{(parentInfo | async)?.phone}}</span> <span>Email: {{(parentInfo | async)?.email}}</span>
+  <h1>{{ (parentInfo | async)?.fullName }}</h1>
+  <ul>
+    <li *ngFor="let student of students | async">
+      Name: {{student.name}} ({{student.$key}})</li>
+  </ul>
 </div>
 
 

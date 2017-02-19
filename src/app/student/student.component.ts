@@ -38,17 +38,24 @@ export class StudentComponent implements OnInit {
 
   onSubmit() {
     const formValues = this.student.value;
+    
     // http://stackoverflow.com/questions/40776255/ng-bootstrap-datepicker-format/41443807#41443807
     const ngbDate = this.student.controls['birthDate'].value;
     formValues['born'] = new Date(ngbDate.year, ngbDate.month-1, ngbDate.day).toString();
     formValues['fullName'] = `${this.student.value.firstName} ${this.student.value.lastName}`
-    this.students$.push(formValues);
+    
+    // push student to collection of students
+    let studentKey = this.students$.push(formValues).key;
+
+    // add student name to parent object
+    this.af.database.object(`/parents/${formValues.parent}/children/${studentKey}`)
+      .update({ name: formValues.fullName });
+
+    this.student.reset();
   }
 
   changeState(state:string, key:any = null) {
-    console.log(`Changing state to ${state}`);
     if (key) {
-      console.log(`Changing key to ${key}`);
       this.activeKey = key;
     }
     this.appState = state;

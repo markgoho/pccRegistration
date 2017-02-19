@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
+
 import { Parent } from '../../parents/parent';
+import {Student} from '../../student/student';
+
 
 @Component({
   selector: 'app-parent-detail',
@@ -11,16 +14,17 @@ import { Parent } from '../../parents/parent';
 export class ParentDetailComponent implements OnInit {
   key: string;
   parentInfo: FirebaseObjectObservable<Parent>;
+  students: any;
 
   constructor(public af: AngularFire, private route: ActivatedRoute) {
     route.params.subscribe((param: any) => {
       this.key = param['key'];
-      console.log(this.key);
     });
   }
 
   ngOnInit() {
     this.parentInfo = this.af.database.object(`/parents/${this.key}`);
+    this.students = this.af.database.list(`/parents/${this.key}/children`);
   }
 
 }
