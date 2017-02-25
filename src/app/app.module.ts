@@ -8,13 +8,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { firebaseConfig, authConfig } from '../environments/firebase.config';
 
-import {AuthGuard} from './auth/auth-guard.service';
-import {AuthService} from './auth/auth.service';
+import { AuthGuard } from './auth/auth-guard.service';
+import { AuthService } from './auth/auth.service';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-
-import { routing } from './app.routing';
-
 
 import { FirebaseService } from './firebase.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -22,10 +19,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ObservablesComponent } from './observables/observables.component';
 import { TypeaheadComponent } from './observables/typeahead/typeahead.component';
 
+// Routing Modules
+import { AppRoutingModule } from './app.routing';
+
 // Modules
-import { CoursesModule } from './courses/courses.module';
-import { ParentsModule } from './parents/parents.module';
-import { StudentsModule } from './students/students.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
@@ -42,10 +40,8 @@ import { StudentsModule } from './students/students.module';
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig, authConfig),
     NgbModule.forRoot(),
-    routing,
-    CoursesModule,
-    ParentsModule,
-    StudentsModule,
+    AuthModule,
+    AppRoutingModule,
   ],
   providers: [FirebaseService, AuthService, AuthGuard],
   bootstrap: [AppComponent]

@@ -6,8 +6,9 @@ import { ParentDetailComponent } from './parent-detail/parent-detail.component';
 import { AuthGuard } from '../auth/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'parents', component: ParentListComponent, canActivate: [AuthGuard] },
-  { path: 'parent/:key', component: ParentDetailComponent, canActivate: [AuthGuard] },
+  // Root path is parents/
+  { path: '', component: ParentListComponent, canLoad: [AuthGuard] },
+  { path: ':key', component: ParentDetailComponent, canLoad: [AuthGuard] },
 ];
 
 @NgModule({

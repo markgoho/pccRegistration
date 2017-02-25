@@ -56,7 +56,7 @@ export class ParentListComponent implements OnInit {
   }
 
   goToParent(key: string) {
-    this.router.navigate(['parent', key]);
+    this.router.navigate(['parents', key]);
   }
 
 }

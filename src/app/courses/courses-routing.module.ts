@@ -5,8 +5,8 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 
 const routes: Routes = [
-  { path: 'courses', component: CourseListComponent },
-  { path: 'courses/:courseId', component: CourseDetailComponent }
+  { path: '', component: CourseListComponent },
+  { path: ':courseId', component: CourseDetailComponent }
 ];
 
 @NgModule({

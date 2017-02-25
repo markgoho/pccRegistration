@@ -1,22 +1,13 @@
-import {LoginComponent} from './login/login.component';
-import {AuthService} from '../shared/auth.service';
-import {AuthGuard} from './auth-guard.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import {LoginComponent} from './login/login.component';
+
+import { AuthRoutingModule } from './auth-routing.module';
 
 @NgModule({
-  declarations: [
-    LoginComponent
-  ],
-  imports: [
-    CommonModule
-  ],
-  providers: [
-    AuthService,
-    AuthGuard,
-  ]
+  imports: [ CommonModule, AuthRoutingModule ],
+  declarations: [ LoginComponent ],
+  providers: [ ]
 })
-export class AuthModule {
-
-}
+export class AuthModule { }
