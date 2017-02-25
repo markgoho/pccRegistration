@@ -7,7 +7,7 @@ import {AuthService} from "../auth.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
 
   constructor(public auth: AuthService, private router: Router) {
@@ -17,6 +17,10 @@ export class LoginComponent {
   //   this.auth.signInWithGithub()
   //     .then(() => this.postSignIn());
   // }
+
+  ngOnInit() {
+    if (this.auth.state) { this.router.navigate(['/parents']); }
+  }
 
   signInWithGoogle(): void {
     this.auth.signInWithGoogle()
@@ -34,8 +38,7 @@ export class LoginComponent {
   }
 
   private postSignIn(): void {
-    this.router.navigate(['/parents'])
-      .then(() => console.log('Navigated to parents'));
+    this.router.navigate(['/parents']);
   }
 
 }

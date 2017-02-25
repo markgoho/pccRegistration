@@ -4,44 +4,35 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { firebaseConfig, authConfig } from '../environments/firebase.config';
 
+import {AuthGuard} from './auth/auth-guard.service';
+import {AuthService} from './auth/auth.service';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './home.component';
+
 import { routing } from './app.routing';
-import { StudentComponent } from './student/student.component';
-import { ParentsComponent } from './parents/parents.component';
-import { CourseComponent } from './course/course.component';
+
+
 import { FirebaseService } from './firebase.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SigninComponent } from './authentication/signin/signin.component';
-import { ParentDetailComponent } from './parent/parent-detail/parent-detail.component';
-import { AuthGuard } from './auth/auth-guard.service';
-import { LoginComponent } from './auth/login/login.component';
-import { EmailComponent } from './auth/email/email.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { AuthService } from './auth/auth.service';
+
 import { ObservablesComponent } from './observables/observables.component';
 import { TypeaheadComponent } from './observables/typeahead/typeahead.component';
+
+// Modules
+import { CoursesModule } from './courses/courses.module';
+import { ParentsModule } from './parents/parents.module';
+import { StudentsModule } from './students/students.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent,
-    StudentComponent,
-    ParentsComponent,
-    CourseComponent,
     PageNotFoundComponent,
-    SigninComponent,
-    ParentDetailComponent,
-    LoginComponent,
-    EmailComponent,
-    SignupComponent,
     ObservablesComponent,
     TypeaheadComponent
   ],
@@ -49,12 +40,14 @@ import { TypeaheadComponent } from './observables/typeahead/typeahead.component'
     BrowserModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig, authConfig),
     NgbModule.forRoot(),
     routing,
+    CoursesModule,
+    ParentsModule,
+    StudentsModule,
   ],
-  providers: [FirebaseService, AuthGuard, AuthService],
+  providers: [FirebaseService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

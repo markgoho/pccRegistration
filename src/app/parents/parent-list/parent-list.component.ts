@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { FirebaseService } from '../firebase.service';
 import { AngularFire } from 'angularfire2';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../../auth/auth.service';
 
-import { Parent } from './parent';
+import { Parent } from '../parent';
 
 @Component({
   selector: 'app-parents',
-  templateUrl: './parents.component.html',
-  styleUrls: ['./parents.component.scss']
+  templateUrl: './parent-list.component.html',
+  styleUrls: ['./parent-list.component.scss']
 })
-export class ParentsComponent implements OnInit {
+export class ParentListComponent implements OnInit {
   parents: Parent[];
   activeKey: string;
   appState: string;

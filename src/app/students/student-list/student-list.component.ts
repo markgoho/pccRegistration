@@ -3,15 +3,13 @@ import { FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 
-import { Student } from './student';
-
 @Component({
-  selector: 'app-student',
-  templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css']
+  selector: 'app-student-list',
+  templateUrl: './student-list.component.html',
+  styleUrls: ['./student-list.component.css']
 })
-export class StudentComponent implements OnInit {
-  activeKey: string;
+export class StudentListComponent implements OnInit {
+activeKey: string;
   appState: string;
 
   student: FormGroup;

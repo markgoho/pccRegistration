@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
 
 import { Parent } from '../../parents/parent';
-import {Student} from '../../student/student';
+import {Student} from '../../students/student';
 
 
 @Component({
