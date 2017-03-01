@@ -1,5 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
+import {AngularFire} from 'angularfire2';
+
 import {AuthService} from "../auth.service";
 
 @Component({
@@ -10,7 +12,7 @@ import {AuthService} from "../auth.service";
 export class LoginComponent implements OnInit {
 
 
-  constructor(public auth: AuthService, private router: Router) {
+  constructor(public auth: AuthService, private router: Router, private af: AngularFire) {
   }
 
   // signInWithGithub(): void {
@@ -19,7 +21,7 @@ export class LoginComponent implements OnInit {
   // }
 
   ngOnInit() {
-    if (this.auth.state) { this.router.navigate(['/parents']); }
+    if (this.auth.state) { this.router.navigate(['']); }
   }
 
   signInWithGoogle(): void {
@@ -38,7 +40,16 @@ export class LoginComponent implements OnInit {
   }
 
   private postSignIn(): void {
-    this.router.navigate(['/parents']);
+    this.af.database.object('/admin').subscribe(admin => {
+      if ((admin.$value) === null) {
+        let update = {};
+        update['/admin'] = {[this.auth.id]: true};
+        update[`/parents/${this.auth.id}`] = {'admin': true}
+        this.af.database.object('').update(update);
+      }
+    });
+    console.log('logged in!');
+    this.router.navigate(['']);
   }
 
 }

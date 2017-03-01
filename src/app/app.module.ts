@@ -24,6 +24,11 @@ import { AppRoutingModule } from './app.routing';
 
 // Modules
 import { AuthModule } from './auth/auth.module';
+import { HomeModule } from "./home/home.module";
+
+// Services
+import { AuthLoadGuard } from './auth/auth-load.guard';
+
 
 
 @NgModule({
@@ -32,7 +37,8 @@ import { AuthModule } from './auth/auth.module';
     NavbarComponent,
     PageNotFoundComponent,
     ObservablesComponent,
-    TypeaheadComponent
+    TypeaheadComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -41,9 +47,10 @@ import { AuthModule } from './auth/auth.module';
     AngularFireModule.initializeApp(firebaseConfig, authConfig),
     NgbModule.forRoot(),
     AuthModule,
+    HomeModule,
     AppRoutingModule,
   ],
-  providers: [FirebaseService, AuthService, AuthGuard],
+  providers: [FirebaseService, AuthService, AuthGuard, AuthLoadGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

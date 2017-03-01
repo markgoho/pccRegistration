@@ -7,8 +7,8 @@ import { AuthGuard } from '../auth/auth-guard.service';
 
 const routes: Routes = [
   // Root path is parents/
-  { path: '', component: ParentListComponent, canLoad: [AuthGuard] },
-  { path: ':key', component: ParentDetailComponent, canLoad: [AuthGuard] },
+  { path: '', component: ParentListComponent },
+  { path: ':key', component: ParentDetailComponent },
 ];
 
 @NgModule({
